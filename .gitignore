@@ -1,0 +1,30 @@
+# Compiled binaries
+*.out
+a.out
+
+# Personal solutions & submissions
+solutions/
+success/
+rendu/
+
+# Runtime & temp files
+traceback
+*.swp
+*.swo
+
+# Personal environment
+.system/.env
+.system/exam_token/current_token.txt
+.system/grading/passed
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Build artifacts in .system
+.system/a.out
+.system/grading/.dev
+.system/grading/passed
+
+# Duplicate clone folder
+Grademe-edu/
