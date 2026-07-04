@@ -61,6 +61,12 @@ bool exam::prepare_current_ex(void)
     cmd_system_call = "mkdir -p " + rendu_dir;
     system(cmd_system_call.c_str());
 
+    // if a setup.sh exists for this exercise, run it to copy provided files immediately
+    if (file_exists(".system/grading/setup.sh"))
+    {
+        system("bash .system/grading/setup.sh");
+    }
+
     return (false);
 }
 
