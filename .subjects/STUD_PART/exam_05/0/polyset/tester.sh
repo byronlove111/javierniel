@@ -7,7 +7,9 @@ if [ -e traceback ]; then
     rm traceback
 fi
 
-# Copy infrastructure files for student to read BEFORE compilation
+cd .system/grading
+
+# Copy infrastructure files for student to read immediately
 mkdir -p "$STUDENT_DIR"
 cp bag.hpp "$STUDENT_DIR/" 2>/dev/null
 cp searchable_bag.hpp "$STUDENT_DIR/" 2>/dev/null
@@ -16,8 +18,6 @@ cp array_bag.cpp "$STUDENT_DIR/" 2>/dev/null
 cp tree_bag.hpp "$STUDENT_DIR/" 2>/dev/null
 cp tree_bag.cpp "$STUDENT_DIR/" 2>/dev/null
 cp main.cpp "$STUDENT_DIR/" 2>/dev/null
-
-cd .system/grading
 
 # Compile reference solution
 g++ -std=c++11 main.cpp array_bag.cpp tree_bag.cpp searchable_array_bag.cpp searchable_tree_bag.cpp set.cpp -o source 2>/dev/null
