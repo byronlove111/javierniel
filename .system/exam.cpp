@@ -23,7 +23,7 @@ std::map<int, exercise> exam::list_dir(void)
     while ((entry = readdir(dir)) != NULL)
     {
         folder = entry->d_name;
-        if (folder != "." && folder != ".." && folder != ".DS_Store")
+        if (folder != "." && folder != ".." && folder != ".DS_Store" && folder[0] != '_')
         {
             list.insert(std::pair<int, exercise>(i, exercise(get_lvl(), folder)));
             i++;

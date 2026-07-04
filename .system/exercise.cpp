@@ -56,11 +56,9 @@ bool exam::prepare_current_ex(void)
     cmd_system_call = "cp " + get_path() + "* .system/grading/ >/dev/null 2>&1";
     system(cmd_system_call.c_str());
 
-    // create rendu/<exercise_name>/ and copy provided files so the student can read them immediately
+    // create rendu/<exercise_name>/ so the student has the folder ready
     std::string rendu_dir = "rendu/" + current_ex->get_name();
     cmd_system_call = "mkdir -p " + rendu_dir;
-    system(cmd_system_call.c_str());
-    cmd_system_call = "cp " + get_path() + "* " + rendu_dir + "/ >/dev/null 2>&1";
     system(cmd_system_call.c_str());
 
     return (false);

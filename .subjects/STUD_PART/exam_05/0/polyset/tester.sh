@@ -7,6 +7,16 @@ if [ -e traceback ]; then
     rm traceback
 fi
 
+# Copy infrastructure files for student to read BEFORE compilation
+mkdir -p "$STUDENT_DIR"
+cp bag.hpp "$STUDENT_DIR/" 2>/dev/null
+cp searchable_bag.hpp "$STUDENT_DIR/" 2>/dev/null
+cp array_bag.hpp "$STUDENT_DIR/" 2>/dev/null
+cp array_bag.cpp "$STUDENT_DIR/" 2>/dev/null
+cp tree_bag.hpp "$STUDENT_DIR/" 2>/dev/null
+cp tree_bag.cpp "$STUDENT_DIR/" 2>/dev/null
+cp main.cpp "$STUDENT_DIR/" 2>/dev/null
+
 cd .system/grading
 
 # Compile reference solution
@@ -21,15 +31,6 @@ g++ -std=c++11 main.cpp array_bag.cpp tree_bag.cpp searchable_array_bag.cpp sear
 
 rm -f source
 
-# Copy infrastructure + main.cpp into student's rendu folder
-cp main.cpp "$STUDENT_DIR/"
-cp bag.hpp "$STUDENT_DIR/"
-cp searchable_bag.hpp "$STUDENT_DIR/"
-cp array_bag.hpp "$STUDENT_DIR/"
-cp array_bag.cpp "$STUDENT_DIR/"
-cp tree_bag.hpp "$STUDENT_DIR/"
-cp tree_bag.cpp "$STUDENT_DIR/"
-
 cd ../../rendu
 
 {
@@ -43,9 +44,7 @@ cd ../../rendu
         -o final
 } 2>../.system/grading/traceback
 
-rm -f "$EXERCISE/main.cpp" "$EXERCISE/bag.hpp" "$EXERCISE/searchable_bag.hpp"
-rm -f "$EXERCISE/array_bag.hpp" "$EXERCISE/array_bag.cpp"
-rm -f "$EXERCISE/tree_bag.hpp" "$EXERCISE/tree_bag.cpp"
+rm -f "$EXERCISE/main.cpp"
 
 if [ -f final ]; then
     ./final 5 3 8 1 9 2        | cat -e > finalexam
